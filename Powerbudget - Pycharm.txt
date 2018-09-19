@@ -1,0 +1,417 @@
+import time
+
+def start():
+    print("Start Powerbudget")
+    time.sleep(3)
+    return fibertype
+
+def fibertype():
+    ft =int(input("Vælg fibertype: 1. Singlemode / 2.Multimode"))
+    if ft == 1:
+        print("Du har valgt Singlemode, gå hjem og dø alene")
+        print("")
+        return singlemode
+    elif ft == 2:
+        print("Du har valgt Multimode")
+        print("")
+        return multimode
+    else:
+        print("Vælg noget ordentligt")
+        print("")
+        return fibertype()
+    
+def singlemode():
+    sm = int(input("Vælg Singlemode fiber: 1.1310nm, 2.1383nm, 3.1460nm,4.1550nm eller 5.1625nm"))
+    if sm == 1:
+        print("Du har valgt en fiber på 1310nm")
+        print("")
+        return sm1310
+    elif sm == 2:
+        print("Du har valgt en fiber på 1383nm")
+        print("")
+        return sm1383
+    elif sm == 3:
+        print("Du har valgt en fiber på 1460nm")
+        print("")
+        return sm1460
+    elif sm == 4:
+        print("Du har valgt en fiber på 1550nm")
+        print("")
+        return sm1550
+    elif sm == 5:
+        print("Du har valgt en fiber på 1625nm")
+        print("")
+        return sm1625
+    else:
+        print("Vælg igen")
+        print("")
+        return singlemode()
+
+def multimode():
+    mm = int(input("Vælg Multimode fiber: 1.850nm eller 2.1300nm"))
+    if mm == 1:
+        print("Du har valgt en fiber på 850nm")
+        print("")
+        return mm850
+    elif mm == 2:
+        print("Du har valgt en fiber på 1300nm")
+        print("")
+        return mm1300
+    else:
+        print("Vælg igen")
+        return multimode()
+
+def sm1310():
+    sm1310A = float(input("Længden af 1310nm fiber i kilometer:"))#Længde af kabel - måles i kilometer
+    print("")
+    print("Tab i db/km = 0.35")
+    print(sm1310A,"*",0.35,"=",sm1310A * 0.35,"db")
+    print("")
+    sm1310B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",sm1310B,"db")
+    print("")
+    sm1310C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",sm1310C,"db")
+    print("")
+    print("Brutto overskud =",sm1310C - sm1310B,"db")
+    print("")
+    sm1310D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",sm1310D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(sm1310D,"*",0.5,"=",sm1310D * 0.5,"db")
+    print("")
+    sm1310E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",sm1310E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(sm1310E,"*",0.1,"=",sm1310E * 0.1,"db")
+    print("")
+    print("Link margin =",(sm1310C - sm1310B) - (sm1310A * 0.35) -(sm1310D * 0.5) - (sm1310E * 0.1),"db")
+    print("")
+    sm1310F =3
+    print("Sikkerhedsmargin, standard buffer =",sm1310F,"db")#Sikkerhedmargin - Standard buffer 3db
+    sm1310G =0.5
+    print("Raperationsmargin, standard buffer =", sm1310G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    sm1310H = (sm1310C - sm1310B) - (sm1310A * 0.35) -(sm1310D * 0.5) - (sm1310E * 0.1) - sm1310F - sm1310G
+    if sm1310H <=0:
+        print("Powerbudget overskredet:",sm1310H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif sm1310H >=3:
+        print("Powerbudget godt:",sm1310H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",sm1310H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def sm1383():
+    sm1383A = float(input("Længden af 1383nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 0.35")
+    print(sm1383A,"*",0.35,"=",sm1383A * 0.35,"db")
+    print("")
+    sm1383B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",sm1383B,"db")
+    print("")
+    sm1383C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",sm1383C,"db")
+    print("")
+    print("Brutto overskud =",sm1383C - sm1383B,"db")
+    print("")
+    sm1383D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",sm1383D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(sm1383D,"*",0.5,"=",sm1383D * 0.5,"db")
+    print("")
+    sm1383E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",sm1383E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(sm1383E,"*",0.1,"=",sm1383E * 0.1,"db")
+    print("")
+    print("Link margin =",(sm1383C - sm1383B) - (sm1383A * 0.35) -(sm1383D * 0.5) - (sm1383E * 0.1),"db")
+    print("")
+    sm1383F =3
+    print("Sikkerhedsmargin, standard buffer =",sm1383F,"db")#Sikkerhedmargin - Standard buffer 3db
+    sm1383G =0.5
+    print("Raperationsmargin, standard buffer =", sm1383G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    sm1383H = (sm1383C - sm1383B) - (sm1383A * 0.35) -(sm1383D * 0.5) - (sm1383E * 0.1) - sm1383F - sm1383G
+    if sm1383H <=0:
+        print("Powerbudget overskredet:",sm1383H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif sm1383H >=3:
+        print("Powerbudget godt:",sm1383H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",sm1383H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def sm1460():
+    sm1460A = float(input("Længden af 1460nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 0.25")
+    print(sm1460A,"*",0.25,"=",sm1460A * 0.25,"db")
+    print("")
+    sm1460B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",sm1460B,"db")
+    print("")
+    sm1460C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",sm1460C,"db")
+    print("")
+    print("Brutto overskud =",sm1460C - sm1460B,"db")
+    print("")
+    sm1460D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",sm1460D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(sm1460D,"*",0.5,"=",sm1460D * 0.5,"db")
+    print("")
+    sm1460E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",sm1460E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(sm1460E,"*",0.1,"=",sm1460E * 0.1,"db")
+    print("")
+    print("Link margin =",(sm1460C - sm1460B) - (sm1460A * 0.25) -(sm1460D * 0.5) - (sm1460E * 0.1),"db")
+    print("")
+    sm1460F =3
+    print("Sikkerhedsmargin, standard buffer =",sm1460F,"db")#Sikkerhedmargin - Standard buffer 3db
+    sm1460G =0.5
+    print("Raperationsmargin, standard buffer =", sm1460G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    sm1460H = (sm1460C - sm1460B) - (sm1460A * 0.25) -(sm1460D * 0.5) - (sm1460E * 0.1) - sm1460F - sm1460G
+    if sm1460H <=0:
+        print("Powerbudget overskredet:",sm1460H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif sm1460H >=3:
+        print("Powerbudget godt:",sm1460H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",sm1460H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def sm1550():
+    sm1550A = float(input("Længden af 1550nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 0.21")
+    print(sm1550A,"*",0.21,"=",sm1550A * 0.21,"db")
+    print("")
+    sm1550B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",sm1550B,"db")
+    print("")
+    sm1550C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",sm1550C,"db")
+    print("")
+    print("Brutto overskud =",sm1550C - sm1550B,"db")
+    print("")
+    sm1550D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",sm1550D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(sm1550D,"*",0.5,"=",sm1550D * 0.5,"db")
+    print("")
+    sm1550E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",sm1550E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(sm1550E,"*",0.1,"=",sm1550E * 0.1,"db")
+    print("")
+    print("Link margin =",(sm1550C - sm1550B) - (sm1550A * 0.21) -(sm1550D * 0.5) - (sm1550E * 0.1),"db")
+    print("")
+    sm1550F =3
+    print("Sikkerhedsmargin, standard buffer =",sm1550F,"db")#Sikkerhedmargin - Standard buffer 3db
+    sm1550G =0.5
+    print("Raperationsmargin, standard buffer =", sm1550G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    sm1550H = (sm1550C - sm1550B) - (sm1550A * 0.21) -(sm1550D * 0.5) - (sm1550E * 0.1) - sm1550F - sm1550G
+    if sm1550H <=0:
+        print("Powerbudget overskredet:",sm1550H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif sm1550H >=3:
+        print("Powerbudget godt:",sm1550H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",sm1550H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def sm1625():
+    sm1625A = float(input("Længden af 1625nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 0.23")
+    print(sm1625A,"*",0.23,"=",sm1625A * 0.23,"db")
+    print("")
+    sm1625B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",sm1625B,"db")
+    print("")
+    sm1625C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",sm1625C,"db")
+    print("")
+    print("Brutto overskud =",sm1625C - sm1625B,"db")
+    print("")
+    sm1625D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",sm1625D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(sm1625D,"*",0.5,"=",sm1625D * 0.5,"db")
+    print("")
+    sm1625E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",sm1625E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(sm1625E,"*",0.1,"=",sm1625E * 0.1,"db")
+    print("")
+    print("Link margin =",(sm1625C - sm1625B) - (sm1625A * 0.23) -(sm1625D * 0.5) - (sm1625E * 0.1),"db")
+    print("")
+    sm1625F =3
+    print("Sikkerhedsmargin, standard buffer =",sm1625F,"db")#Sikkerhedmargin - Standard buffer 3db
+    sm1625G =0.5
+    print("Raperationsmargin, standard buffer =", sm1625G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    sm1625H = (sm1625C - sm1625B) - (sm1625A * 0.23) -(sm1625D * 0.5) - (sm1625E * 0.1) - sm1625F - sm1625G
+    if sm1625H <=0:
+        print("Powerbudget overskredet:",sm1625H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif sm1625H >=3:
+        print("Powerbudget godt:",sm1625H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",sm1625H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def mm850():
+    mm850A = float(input("Længden af 850nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 2.20")
+    print(mm850A,"*",2.20,"=",mm850A * 2.20,"db")
+    print("")
+    mm850B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",mm850B,"db")
+    print("")
+    mm850C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",mm850C,"db")
+    print("")
+    print("Brutto overskud =",mm850C - mm850B,"db")
+    print("")
+    mm850D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",mm850D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(mm850D,"*",0.5,"=",mm850D * 0.5,"db")
+    print("")
+    mm850E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",mm850E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(mm850E,"*",0.1,"=",mm850E * 0.1,"db")
+    print("")
+    print("Link margin =",(mm850C - mm850B) - (mm850A * 2.20) -(mm850D * 0.5) - (mm850E * 0.1),"db")
+    print("")
+    mm850F =3
+    print("Sikkerhedsmargin, standard buffer =",mm850F,"db")#Sikkerhedmargin - Standard buffer 3db
+    mm850G =0.5
+    print("Raperationsmargin, standard buffer =", mm850G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    mm850H = (mm850C - mm850B) - (mm850A * 2.20) -(mm850D * 0.5) - (mm850E * 0.1) - mm850F - mm850G
+    if mm850H <=0:
+        print("Powerbudget overskredet:",mm850H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif mm850H >=3:
+        print("Powerbudget godt:",mm850H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",mm850H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def mm1300():
+    mm1300A = float(input("Længden af 1300nm fiber i kilometer"))#Længde af kabel - måles i kilometer
+    print("Tab i db/km = 0.60")
+    print(mm1300A,"*",0.60,"=",mm1300A * 0.60,"db")
+    print("")
+    mm1300B = float(input("Indtast Output power. Oplyses af fabrikanten"))#Output power - oplyses af fabrikanten
+    print("Output power =",mm1300B,"db")
+    print("")
+    mm1300C = float(input("Indtast receiver sensitivity. Oplyses af fabrikanten"))#Receiver sensistivity - oplyses af fabrikanten
+    print("Receiver sensitivity",mm1300C,"db")
+    print("")
+    print("Brutto overskud =",mm1300C - mm1300B,"db")
+    print("")
+    mm1300D = float(input("Antallet af konnekteringer."))#Konnekteringer - 0.5 pr. stk
+    print("Antallet af konnektering:",mm1300D)
+    print("Tab i db pr. konnektering = 0.5")
+    print(mm1300D,"*",0.5,"=",mm1300D * 0.5,"db")
+    print("")
+    mm1300E = float(input("Antallet af splidsninger."))#Splidsninger - 0.1 pr. stk.
+    print("Antallet af splidsning",mm1300E)
+    print("Tab i db pr. splidsning = 0,1")
+    print(mm1300E,"*",0.1,"=",mm1300E * 0.1,"db")
+    print("")
+    print("Link margin =",(mm1300C - mm1300B) - (mm1300A * 0.60) -(mm1300D * 0.5) - (mm1300E * 0.1),"db")
+    print("")
+    mm1300F =3
+    print("Sikkerhedsmargin, standard buffer =",mm1300F,"db")#Sikkerhedmargin - Standard buffer 3db
+    mm1300G =0.5
+    print("Raperationsmargin, standard buffer =", mm1300G,"db")#Reperationer - Standard buffer 0.5db
+    print("")
+    print("Netto powerbudget:")
+    mm1300H = (mm1300C - mm1300B) - (mm1300A * 0.60) -(mm1300D * 0.5) - (mm1300E * 0.1) - mm1300F - mm1300G
+    if mm1300H <=0:
+        print("Powerbudget overskredet:",mm1300H,"<","0")
+        print("")
+        time.sleep(5)
+        return smEND
+    elif mm1300H >=3:
+        print("Powerbudget godt:",mm1300H,">","3")
+        print("")
+        time.sleep(5)
+        return smEND
+    else:
+        print("Power ok:",mm1300H)
+        print("")
+        time.sleep(5)
+        return smEND
+
+def smEND():
+    smENDA = float(input("Tast 1 for at starte forfra eller 2 for at afslutte"))
+    if smENDA ==1:
+        return start()
+    else:
+        return None
+
+def mmEND():
+    mmENDA = float(input("Tast 1 for at starte forfra eller 2 for at afslutte"))
+    if mmENDA ==1:
+        return start()
+    else:
+        return None
+    #Netto overskud
+    
+state=start()
+while state: state=state()
